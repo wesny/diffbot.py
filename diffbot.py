@@ -74,11 +74,14 @@ class Client(object):
         timeout = kwargs.get('timeout')
         text = kwargs.get('text')
         html = kwargs.get('html')
+        discussion = kwargs.get('discussion')
         if text and html:
             raise ValueError(u'Both `text` and `html` arguments provided!')
         params = {'url': url, 'token': self._token}
         if timeout:
             params['timeout'] = timeout
+        if discussion:
+            params['discussion'] = discussion
         if fields:
             if not isinstance(fields, str):
                 fields = ','.join(sorted(fields))
